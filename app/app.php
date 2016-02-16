@@ -13,7 +13,9 @@
 
 	$app->post('/results', function() use ($app){
 		$angleDiff = new Time($_POST['hour'], $_POST['minute']);
-		return $app['twig']->render('clock_form.html.twig', array('results', $angleDiff));
+		$result = $angleDiff->angleDiff();
+		var_dump($angleDiff);
+		return $app['twig']->render('clock_form.html.twig', array('result' => $result));
 	});
 
 	return $app;

@@ -21,7 +21,7 @@
 				if (($hour < 1) || ($hour > 12)) {
 					return 'Please enter a valid hour';
 				} else {
-					$hour_hand = 360 * ($hour / 12) + 30 * ($minute/60);
+					$hour_hand = 360 * ($hour / 12) + 30 * ($minute / 60);
 					return $hour_hand;
 				}
 			} else {
@@ -45,14 +45,15 @@
 
 		function angleDiff()
 		{
-			$hour_angle = $this->getHourAngle($this->hour, $this->minute);
+			//values aren't passing, somehow.  Tests passing, webpage not?  FIX.
+			$hour_angle = $this->getHourAngle($this->getHour(), $this->getMinute());
 			$minute_angle = $this->getMinuteAngle($this->minute);
 			if ($hour_angle > $minute_angle) {
 				return $hour_angle - $minute_angle;
 			} elseif ($minute_angle > $hour_angle) {
 				return $minute_angle - $hour_angle;
 			} else {
-				return 0;
+				return $hour_angle;
 			}
 		}
 	}
